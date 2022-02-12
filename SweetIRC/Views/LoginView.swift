@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var user = UserInfo()
-    
+    @StateObject private var viewModel = LoginViewModel()
     var body: some View {
         VStack {
             Text("Welcome to Sweet IRC")
                 .font(.title)
             Form {
-                TextField("Username: ", text: $user.userName)
-                TextField("Nickname: ", text: $user.nickName)
-                SecureField("Password: ", text: $user.password)
+                TextField("Username: ", text: $viewModel.user.userName)
+                TextField("Nickname: ", text: $viewModel.user.nickName)
+                SecureField("Password: ", text: $viewModel.user.password)
                 
                 
-                Picker("Server: ", selection: $user.selectedServer) {
-                    if user.selectedServer == nil {
+                Picker("Server: ", selection: $viewModel.user.selectedServer) {
+                    if viewModel.user.selectedServer == nil {
                         Text("Select an IRC Network")
                             .tag(nil as ServerInfo?)
                     }
