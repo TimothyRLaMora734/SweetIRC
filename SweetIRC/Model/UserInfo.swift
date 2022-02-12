@@ -8,10 +8,8 @@
 import Foundation
 
 
-struct UserInfo {
+struct User {
     var userName = ""
     var nickName = ""
     var password = ""
-    
-    var selectedServer: ServerInfo?
 }

@@ -8,8 +8,8 @@
 import Foundation
 
 
-struct ServerInfo: Hashable {
-    let name: String
+struct Server: Hashable {
+    let friendlyName: String
     let URL: URL
     let isTSL: Bool
 }

@@ -11,5 +11,7 @@ import SwiftUI
 
 class LoginViewModel: ObservableObject {
     
-    @Published var user = UserInfo()
+    @Published var user = User()
+    
+    @Published var selectedServer: Server?
 }

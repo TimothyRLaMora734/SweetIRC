@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel()
+    
     var body: some View {
         VStack {
             Text("Welcome to Sweet IRC")
@@ -19,14 +20,14 @@ struct LoginView: View {
                 SecureField("Password: ", text: $viewModel.user.password)
                 
                 
-                Picker("Server: ", selection: $viewModel.user.selectedServer) {
-                    if viewModel.user.selectedServer == nil {
+                Picker("Server: ", selection: $viewModel.selectedServer) {
+                    if viewModel.selectedServer == nil {
                         Text("Select an IRC Network")
-                            .tag(nil as ServerInfo?)
+                            .tag(nil as Server?)
                     }
-                    ForEach(servers, id: \.name) { server in
-                        Text("\(server.name)")
-                            .tag(server as ServerInfo?)
+                    ForEach(servers, id: \.friendlyName) { server in
+                        Text("\(server.friendlyName)")
+                            .tag(server as Server?)
                     }
                 }
                 .padding(.top)
