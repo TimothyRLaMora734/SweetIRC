@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		37C6699927B80F2F00B8F193 /* SweetIRCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6699827B80F2F00B8F193 /* SweetIRCApp.swift */; };
+		37C6699B27B80F2F00B8F193 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6699A27B80F2F00B8F193 /* ContentView.swift */; };
+		37C6699D27B80F2F00B8F193 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C6699C27B80F2F00B8F193 /* Assets.xcassets */; };
+		37C669A027B80F2F00B8F193 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C6699F27B80F2F00B8F193 /* Preview Assets.xcassets */; };
+		37C669AB27B80F2F00B8F193 /* SweetIRCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C669AA27B80F2F00B8F193 /* SweetIRCTests.swift */; };
+		37C669B527B80F2F00B8F193 /* SweetIRCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C669B427B80F2F00B8F193 /* SweetIRCUITests.swift */; };
+		37C669B727B80F2F00B8F193 /* SweetIRCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C669B627B80F2F00B8F193 /* SweetIRCUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		37C669A727B80F2F00B8F193 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37C6698D27B80F2F00B8F193 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37C6699427B80F2F00B8F193;
+			remoteInfo = SweetIRC;
+		};
+		37C669B127B80F2F00B8F193 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37C6698D27B80F2F00B8F193 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37C6699427B80F2F00B8F193;
+			remoteInfo = SweetIRC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		37C6699527B80F2F00B8F193 /* SweetIRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetIRC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37C6699827B80F2F00B8F193 /* SweetIRCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetIRCApp.swift; sourceTree = "<group>"; };
+		37C6699A27B80F2F00B8F193 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		37C6699C27B80F2F00B8F193 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		37C6699F27B80F2F00B8F193 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		37C669A127B80F2F00B8F193 /* SweetIRC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SweetIRC.entitlements; sourceTree = "<group>"; };
+		37C669A627B80F2F00B8F193 /* SweetIRCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweetIRCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37C669AA27B80F2F00B8F193 /* SweetIRCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetIRCTests.swift; sourceTree = "<group>"; };
+		37C669B027B80F2F00B8F193 /* SweetIRCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweetIRCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37C669B427B80F2F00B8F193 /* SweetIRCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetIRCUITests.swift; sourceTree = "<group>"; };
+		37C669B627B80F2F00B8F193 /* SweetIRCUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetIRCUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		37C6699227B80F2F00B8F193 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C669A327B80F2F00B8F193 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C669AD27B80F2F00B8F193 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		37C6698C27B80F2F00B8F193 = {
+			isa = PBXGroup;
+			children = (
+				37C6699727B80F2F00B8F193 /* SweetIRC */,
+				37C669A927B80F2F00B8F193 /* SweetIRCTests */,
+				37C669B327B80F2F00B8F193 /* SweetIRCUITests */,
+				37C6699627B80F2F00B8F193 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		37C6699627B80F2F00B8F193 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				37C6699527B80F2F00B8F193 /* SweetIRC.app */,
+				37C669A627B80F2F00B8F193 /* SweetIRCTests.xctest */,
+				37C669B027B80F2F00B8F193 /* SweetIRCUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		37C6699727B80F2F00B8F193 /* SweetIRC */ = {
+			isa = PBXGroup;
+			children = (
+				37C6699827B80F2F00B8F193 /* SweetIRCApp.swift */,
+				37C6699A27B80F2F00B8F193 /* ContentView.swift */,
+				37C6699C27B80F2F00B8F193 /* Assets.xcassets */,
+				37C669A127B80F2F00B8F193 /* SweetIRC.entitlements */,
+				37C6699E27B80F2F00B8F193 /* Preview Content */,
+			);
+			path = SweetIRC;
+			sourceTree = "<group>";
+		};
+		37C6699E27B80F2F00B8F193 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				37C6699F27B80F2F00B8F193 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		37C669A927B80F2F00B8F193 /* SweetIRCTests */ = {
+			isa = PBXGroup;
+			children = (
+				37C669AA27B80F2F00B8F193 /* SweetIRCTests.swift */,
+			);
+			path = SweetIRCTests;
+			sourceTree = "<group>";
+		};
+		37C669B327B80F2F00B8F193 /* SweetIRCUITests */ = {
+			isa = PBXGroup;
+			children = (
+				37C669B427B80F2F00B8F193 /* SweetIRCUITests.swift */,
+				37C669B627B80F2F00B8F193 /* SweetIRCUITestsLaunchTests.swift */,
+			);
+			path = SweetIRCUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		37C6699427B80F2F00B8F193 /* SweetIRC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37C669BA27B80F2F00B8F193 /* Build configuration list for PBXNativeTarget "SweetIRC" */;
+			buildPhases = (
+				37C6699127B80F2F00B8F193 /* Sources */,
+				37C6699227B80F2F00B8F193 /* Frameworks */,
+				37C6699327B80F2F00B8F193 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SweetIRC;
+			productName = SweetIRC;
+			productReference = 37C6699527B80F2F00B8F193 /* SweetIRC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		37C669A527B80F2F00B8F193 /* SweetIRCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37C669BD27B80F2F00B8F193 /* Build configuration list for PBXNativeTarget "SweetIRCTests" */;
+			buildPhases = (
+				37C669A227B80F2F00B8F193 /* Sources */,
+				37C669A327B80F2F00B8F193 /* Frameworks */,
+				37C669A427B80F2F00B8F193 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37C669A827B80F2F00B8F193 /* PBXTargetDependency */,
+			);
+			name = SweetIRCTests;
+			productName = SweetIRCTests;
+			productReference = 37C669A627B80F2F00B8F193 /* SweetIRCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		37C669AF27B80F2F00B8F193 /* SweetIRCUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37C669C027B80F2F00B8F193 /* Build configuration list for PBXNativeTarget "SweetIRCUITests" */;
+			buildPhases = (
+				37C669AC27B80F2F00B8F193 /* Sources */,
+				37C669AD27B80F2F00B8F193 /* Frameworks */,
+				37C669AE27B80F2F00B8F193 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37C669B227B80F2F00B8F193 /* PBXTargetDependency */,
+			);
+			name = SweetIRCUITests;
+			productName = SweetIRCUITests;
+			productReference = 37C669B027B80F2F00B8F193 /* SweetIRCUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		37C6698D27B80F2F00B8F193 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					37C6699427B80F2F00B8F193 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					37C669A527B80F2F00B8F193 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 37C6699427B80F2F00B8F193;
+					};
+					37C669AF27B80F2F00B8F193 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 37C6699427B80F2F00B8F193;
+					};
+				};
+			};
+			buildConfigurationList = 37C6699027B80F2F00B8F193 /* Build configuration list for PBXProject "SweetIRC" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 37C6698C27B80F2F00B8F193;
+			productRefGroup = 37C6699627B80F2F00B8F193 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				37C6699427B80F2F00B8F193 /* SweetIRC */,
+				37C669A527B80F2F00B8F193 /* SweetIRCTests */,
+				37C669AF27B80F2F00B8F193 /* SweetIRCUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		37C6699327B80F2F00B8F193 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C669A027B80F2F00B8F193 /* Preview Assets.xcassets in Resources */,
+				37C6699D27B80F2F00B8F193 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C669A427B80F2F00B8F193 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C669AE27B80F2F00B8F193 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		37C6699127B80F2F00B8F193 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C6699B27B80F2F00B8F193 /* ContentView.swift in Sources */,
+				37C6699927B80F2F00B8F193 /* SweetIRCApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C669A227B80F2F00B8F193 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C669AB27B80F2F00B8F193 /* SweetIRCTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C669AC27B80F2F00B8F193 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C669B727B80F2F00B8F193 /* SweetIRCUITestsLaunchTests.swift in Sources */,
+				37C669B527B80F2F00B8F193 /* SweetIRCUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37C669A827B80F2F00B8F193 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37C6699427B80F2F00B8F193 /* SweetIRC */;
+			targetProxy = 37C669A727B80F2F00B8F193 /* PBXContainerItemProxy */;
+		};
+		37C669B227B80F2F00B8F193 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37C6699427B80F2F00B8F193 /* SweetIRC */;
+			targetProxy = 37C669B127B80F2F00B8F193 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		37C669B827B80F2F00B8F193 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		37C669B927B80F2F00B8F193 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		37C669BB27B80F2F00B8F193 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SweetIRC/SweetIRC.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SweetIRC/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.dan.SweetIRC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		37C669BC27B80F2F00B8F193 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SweetIRC/SweetIRC.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SweetIRC/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.dan.SweetIRC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		37C669BE27B80F2F00B8F193 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.dan.SweetIRCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetIRC.app/Contents/MacOS/SweetIRC";
+			};
+			name = Debug;
+		};
+		37C669BF27B80F2F00B8F193 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.dan.SweetIRCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetIRC.app/Contents/MacOS/SweetIRC";
+			};
+			name = Release;
+		};
+		37C669C127B80F2F00B8F193 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.dan.SweetIRCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = SweetIRC;
+			};
+			name = Debug;
+		};
+		37C669C227B80F2F00B8F193 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.dan.SweetIRCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = SweetIRC;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		37C6699027B80F2F00B8F193 /* Build configuration list for PBXProject "SweetIRC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37C669B827B80F2F00B8F193 /* Debug */,
+				37C669B927B80F2F00B8F193 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37C669BA27B80F2F00B8F193 /* Build configuration list for PBXNativeTarget "SweetIRC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37C669BB27B80F2F00B8F193 /* Debug */,
+				37C669BC27B80F2F00B8F193 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37C669BD27B80F2F00B8F193 /* Build configuration list for PBXNativeTarget "SweetIRCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37C669BE27B80F2F00B8F193 /* Debug */,
+				37C669BF27B80F2F00B8F193 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37C669C027B80F2F00B8F193 /* Build configuration list for PBXNativeTarget "SweetIRCUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37C669C127B80F2F00B8F193 /* Debug */,
+				37C669C227B80F2F00B8F193 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 37C6698D27B80F2F00B8F193 /* Project object */;
+}
