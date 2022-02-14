@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var viewModel = LoginViewModel()
+    
     var body: some View {
-        LoginView()
+        if viewModel.isLoginDone {
+            ChatView()
+                .transition(.slide)
+        } else {
+            LoginView(viewModel: viewModel)
+        }
     }
 }
 

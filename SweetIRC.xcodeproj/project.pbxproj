@@ -15,11 +15,12 @@
 		37C669B527B80F2F00B8F193 /* SweetIRCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C669B427B80F2F00B8F193 /* SweetIRCUITests.swift */; };
 		37C669B727B80F2F00B8F193 /* SweetIRCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C669B627B80F2F00B8F193 /* SweetIRCUITestsLaunchTests.swift */; };
 		37DD30CA27B8165000D7C4E4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD30C927B8165000D7C4E4 /* LoginView.swift */; };
-		37DD30CD27B8171700D7C4E4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD30CC27B8171700D7C4E4 /* UserInfo.swift */; };
+		37DD30CD27B8171700D7C4E4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD30CC27B8171700D7C4E4 /* User.swift */; };
 		37DD30D027B818F000D7C4E4 /* IRCServers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD30CF27B818F000D7C4E4 /* IRCServers.swift */; };
-		37DD30D227B8190400D7C4E4 /* ServerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD30D127B8190400D7C4E4 /* ServerInfo.swift */; };
+		37DD30D227B8190400D7C4E4 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD30D127B8190400D7C4E4 /* Server.swift */; };
 		37DD30D527B8281F00D7C4E4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD30D427B8281F00D7C4E4 /* LoginViewModel.swift */; };
 		37F6894727BA428500A0D8A9 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6894627BA428500A0D8A9 /* LoginFormView.swift */; };
+		37F6894A27BA452600A0D8A9 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6894927BA452600A0D8A9 /* ChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,11 +53,12 @@
 		37C669B427B80F2F00B8F193 /* SweetIRCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetIRCUITests.swift; sourceTree = "<group>"; };
 		37C669B627B80F2F00B8F193 /* SweetIRCUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetIRCUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		37DD30C927B8165000D7C4E4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		37DD30CC27B8171700D7C4E4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		37DD30CC27B8171700D7C4E4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		37DD30CF27B818F000D7C4E4 /* IRCServers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRCServers.swift; sourceTree = "<group>"; };
-		37DD30D127B8190400D7C4E4 /* ServerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerInfo.swift; sourceTree = "<group>"; };
+		37DD30D127B8190400D7C4E4 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		37DD30D427B8281F00D7C4E4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		37F6894627BA428500A0D8A9 /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
+		37F6894927BA452600A0D8A9 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 		37DD30C827B815E900D7C4E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				37F6894827BA44E500A0D8A9 /* ChatView */,
 				37F6894527BA426D00A0D8A9 /* LoginView */,
 			);
 			path = Views;
@@ -156,8 +159,8 @@
 		37DD30CB27B8170500D7C4E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				37DD30CC27B8171700D7C4E4 /* UserInfo.swift */,
-				37DD30D127B8190400D7C4E4 /* ServerInfo.swift */,
+				37DD30CC27B8171700D7C4E4 /* User.swift */,
+				37DD30D127B8190400D7C4E4 /* Server.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +188,14 @@
 				37F6894627BA428500A0D8A9 /* LoginFormView.swift */,
 			);
 			path = LoginView;
+			sourceTree = "<group>";
+		};
+		37F6894827BA44E500A0D8A9 /* ChatView */ = {
+			isa = PBXGroup;
+			children = (
+				37F6894927BA452600A0D8A9 /* ChatView.swift */,
+			);
+			path = ChatView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,10 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37DD30CD27B8171700D7C4E4 /* UserInfo.swift in Sources */,
+				37DD30CD27B8171700D7C4E4 /* User.swift in Sources */,
 				37DD30D027B818F000D7C4E4 /* IRCServers.swift in Sources */,
-				37DD30D227B8190400D7C4E4 /* ServerInfo.swift in Sources */,
+				37DD30D227B8190400D7C4E4 /* Server.swift in Sources */,
 				37DD30CA27B8165000D7C4E4 /* LoginView.swift in Sources */,
+				37F6894A27BA452600A0D8A9 /* ChatView.swift in Sources */,
 				37C6699B27B80F2F00B8F193 /* ContentView.swift in Sources */,
 				37C6699927B80F2F00B8F193 /* SweetIRCApp.swift in Sources */,
 				37F6894727BA428500A0D8A9 /* LoginFormView.swift in Sources */,

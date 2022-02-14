@@ -14,4 +14,9 @@ struct User {
     var password = ""
     
     var selectedIRCServer: Server?
+    
+    
+    func canLogin() -> Bool {
+        return userName != "" && password != "" && nickName != "" && selectedIRCServer != nil
+    }
 }

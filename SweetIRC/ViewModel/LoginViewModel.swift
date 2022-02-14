@@ -13,4 +13,6 @@ class LoginViewModel: ObservableObject {
     
     @Published var user = User()
     
+    @Published var isLoginDone = false
+    
 }
