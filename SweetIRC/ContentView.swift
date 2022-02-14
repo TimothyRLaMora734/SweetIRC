@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject private var chatState = ChatState()
+    @EnvironmentObject private var chatState: ChatState
     
     var body: some View {
         if chatState.isLoginDone {
             ChatView()
                 .transition(.slide)
         } else {
-            LoginView(chatState: chatState)
+            LoginView()
         }
     }
 }
@@ -24,5 +24,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ChatState())
     }
 }

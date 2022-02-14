@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var chatState: ChatState
+    @EnvironmentObject private var chatState: ChatState
     
     var body: some View {
         VStack(spacing: 50) {
@@ -39,6 +39,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(chatState: ChatState())
+        LoginView()
+            .environmentObject(ChatState())
     }
 }
