@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-class LoginViewModel: ObservableObject {
+class ChatState: ObservableObject {
     
     @Published var user = User()
     

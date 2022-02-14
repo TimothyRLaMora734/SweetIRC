@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject private var viewModel = LoginViewModel()
+    @StateObject private var chatState = ChatState()
     
     var body: some View {
-        if viewModel.isLoginDone {
+        if chatState.isLoginDone {
             ChatView()
                 .transition(.slide)
         } else {
-            LoginView(viewModel: viewModel)
+            LoginView(chatState: chatState)
         }
     }
 }

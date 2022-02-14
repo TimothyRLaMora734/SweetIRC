@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel: LoginViewModel
+    @ObservedObject var chatState: ChatState
     
     var body: some View {
         VStack(spacing: 50) {
@@ -16,20 +16,20 @@ struct LoginView: View {
                 .font(.title)
                 .padding(.top)
             
-            LoginFormView(user: $viewModel.user)
+            LoginFormView(user: $chatState.user)
             
             Button(action: {
                 withAnimation {
-                    viewModel.isLoginDone.toggle()
+                    chatState.isLoginDone.toggle()
                 }
             }) {
                 Text("Connect")
                     .font(.system(size: 15))
                     .frame(width: 80, height: 30)
-                    .scaleEffect(viewModel.isLoginDone ? 1.5 : 1.0)
+                    .scaleEffect(chatState.isLoginDone ? 1.5 : 1.0)
 
             }
-            .disabled(!viewModel.user.canLogin())
+            .disabled(!chatState.user.canLogin())
             Spacer()
         }
         .frame(width: 300, height: 400)
@@ -39,6 +39,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(viewModel: LoginViewModel())
+        LoginView(chatState: ChatState())
     }
 }
