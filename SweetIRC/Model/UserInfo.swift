@@ -12,4 +12,6 @@ struct User {
     var userName = ""
     var nickName = ""
     var password = ""
+    
+    var selectedIRCServer: Server?
 }
