@@ -19,7 +19,8 @@ struct LoginView: View {
             LoginFormView(user: $chatState.user)
             
             Button(action: {
-                withAnimation {
+                withAnimation(.easeInOut(duration: 1.5)) {
+                    chatState.connect()
                     chatState.isLoginDone.toggle()
                 }
             }) {

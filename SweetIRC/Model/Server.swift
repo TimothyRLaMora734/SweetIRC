@@ -10,6 +10,6 @@ import Foundation
 
 struct Server: Hashable {
     let friendlyName: String
-    let URL: URL
-    let isTSL: Bool
+    let hostname: String
+    let port: Int
 }

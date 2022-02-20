@@ -11,6 +11,7 @@ import Foundation
 struct User {
     var userName = ""
     var nickName = ""
+    var realName = ""
     var password = ""
     
     var selectedIRCServer: Server?
@@ -18,5 +19,6 @@ struct User {
     
     func canLogin() -> Bool {
         return userName != "" && password != "" && nickName != "" && selectedIRCServer != nil
+                    && realName != ""
     }
 }

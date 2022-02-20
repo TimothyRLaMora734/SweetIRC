@@ -25,6 +25,28 @@ class SweetIRCTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
+    
+    func testUserCanLoginWithoutAllInfo() {
+        var user = User()
+        
+        user.nickName = "dan01"
+        user.selectedIRCServer = servers[1];
+        
+        XCTAssert(!user.canLogin())
+    }
+    
+    
+    func testUserCanLogin() {
+        var user = User()
+        
+        user.nickName = "dan01"
+        user.selectedIRCServer = servers[1];
+        user.password = "123"
+        user.userName = "testUser"
+        user.realName = "Dan Stoan"
+        
+        XCTAssert(user.canLogin())
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

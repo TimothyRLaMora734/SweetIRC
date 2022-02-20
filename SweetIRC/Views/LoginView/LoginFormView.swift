@@ -16,7 +16,9 @@ struct LoginFormView: View {
             TextField("Username: ", text: $user.userName, prompt: Text("Please enter the username"))
             SecureField("Password: ", text: $user.password, prompt: Text("Please enter the password"))
             TextField("Nickname: ", text: $user.nickName, prompt: Text("Please enter the nickname"))
+            TextField("Real Name: ", text: $user.realName, prompt: Text("Please enter your real name"))
 
+            
             Picker("Server", selection: $user.selectedIRCServer) {
                 if user.selectedIRCServer == nil {
                     Text("Please selected a IRC server")

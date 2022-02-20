@@ -8,18 +8,23 @@
 import SwiftUI
 
 struct ChatView: View {
+    
+    @EnvironmentObject private var chatState: ChatState
+    
+    
     var body: some View {
         NavigationView{
-            Text("Sidebar")
+            RoomBarView()
                 .frame(minWidth: 150)
-            Text("Chat")
+            MessagesView()
         }
-            .frame(width: 800, height: 600)
+        .frame(width: 800, height: 600)
     }
 }
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         ChatView()
+            .environmentObject(ChatState())
     }
 }
