@@ -16,7 +16,7 @@ struct ChatView: View {
         NavigationView{
             RoomBarView(state: state)
                 .frame(minWidth: 150)
-            MessagesView(room: state.focusedRoom)
+            MessageView(room: state.focusedRoom)
         }
         .frame(width: 800, height: 600)
     }
@@ -24,6 +24,7 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(state: ChatState(server: servers[0], user: User(userName: "Dan", nickName: "dan01", realName: "Dan Me", password: "Alibaba")))
+        let user = User(userName: "Dan", nickName: "dan01", realName: "Dan Me", password: "Alibaba")
+        ChatView(state: ChatState(server: servers[0], user: user))
     }
 }

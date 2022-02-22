@@ -28,9 +28,13 @@ class ServerConnection {
         
         
         Task {
-            try await  send(command: "PASS \(user.password)")
-            try await  send(command: "NICK \(user.nickName)")
-            try await  send(command: "USER \(user.userName) 0 * :\(user.realName)")
+            do {
+                try await  send(command: "PASS \(user.password)")
+                try await  send(command: "NICK \(user.nickName)")
+                try await  send(command: "USER \(user.userName) 0 * :\(user.realName)")
+            } catch  {
+                print("Could not connect to \(server.friendlyName)")
+            }
         }
     }
     
@@ -46,25 +50,27 @@ class ServerConnection {
         }
         
         try await connectionTask.write(data, timeout: ServerConnection.timeOut)
-        
+        print("Sent to server: \(command)")
     }
     
     
-    func receive() async throws -> String {
-        let (data,isDone) = try await connectionTask.readData(ofMinLength: 1, maxLength: ServerConnection.maxRead, timeout: ServerConnection.timeOut)
+    func receive() async -> String {
+        guard let (data,isDone) = try? await connectionTask.readData(ofMinLength: 1, maxLength: ServerConnection.maxRead, timeout: ServerConnection.timeOut) else {
+            return ""
+        }
         
         guard let data = data else {
-            throw InvalidDataError.NoData
+            return ""
         }
         
         guard var message = String(data: data, encoding: .utf8) else {
-            throw InvalidDataError.BadEncoding
+            return ""
         }
         
         if !isDone {
-            message +=  try await receive()
+            message +=  await receive()
         }
-        
+        print("Received from server: \(message)")
         return message
     }
 }

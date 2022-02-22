@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let state = LoginState()
+    @StateObject var state = LoginState()
         
     var body: some View {
         if state.isLoginDone {

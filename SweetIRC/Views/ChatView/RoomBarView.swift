@@ -15,10 +15,10 @@ struct RoomBarView: View {
         List {
             DisclosureGroup {
                 ForEach(state.rooms, id: \.self) { room in
-                    Text("\(room.name)")
+                    NavigationLink(destination: MessageView(room: state.roomOf(name: room.name)), label: {Text("\(room.name)")})
                 }
             } label: {
-                Label("\(state.server.friendlyName) System Roon", systemImage: "server.rack")
+                Label("\(state.server.friendlyName)", systemImage: "server.rack")
             }
         }
     }
