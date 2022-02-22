@@ -9,18 +9,18 @@ import SwiftUI
 
 struct LoginFormView: View {
     
-    @Binding var user: User
+    @ObservedObject var state: LoginState
     
     var body: some View {
         Form {
-            TextField("Username: ", text: $user.userName, prompt: Text("Please enter the username"))
-            SecureField("Password: ", text: $user.password, prompt: Text("Please enter the password"))
-            TextField("Nickname: ", text: $user.nickName, prompt: Text("Please enter the nickname"))
-            TextField("Real Name: ", text: $user.realName, prompt: Text("Please enter your real name"))
+            TextField("Username: ", text: $state.user.userName, prompt: Text("Please enter the username"))
+            SecureField("Password: ", text: $state.user.password, prompt: Text("Please enter the password"))
+            TextField("Nickname: ", text: $state.user.nickName, prompt: Text("Please enter the nickname"))
+            TextField("Real Name: ", text: $state.user.realName, prompt: Text("Please enter your real name"))
 
             
-            Picker("Server", selection: $user.selectedIRCServer) {
-                if user.selectedIRCServer == nil {
+            Picker("Server", selection: $state.selectedIRCServer) {
+                if state.selectedIRCServer == nil {
                     Text("Please selected a IRC server")
                         .tag(nil as Server?)
                 }
@@ -37,7 +37,7 @@ struct LoginFormView: View {
 
 struct LoginFormView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginFormView(user: .constant(User()) )
+        LoginFormView(state: LoginState() )
         
     }
 }

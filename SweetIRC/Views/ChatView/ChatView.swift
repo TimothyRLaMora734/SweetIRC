@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ChatView: View {
     
-    @EnvironmentObject private var chatState: ChatState
+    @StateObject var state: ChatState
     
     
     var body: some View {
         NavigationView{
-            RoomBarView()
+            RoomBarView(state: state)
                 .frame(minWidth: 150)
-            MessagesView()
+            MessagesView(room: state.focusedRoom)
         }
         .frame(width: 800, height: 600)
     }
@@ -24,7 +24,6 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView()
-            .environmentObject(ChatState())
+        ChatView(state: ChatState(server: servers[0], user: User(userName: "Dan", nickName: "dan01", realName: "Dan Me", password: "Alibaba")))
     }
 }

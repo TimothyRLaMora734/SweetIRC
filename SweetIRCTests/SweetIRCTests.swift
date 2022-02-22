@@ -26,26 +26,31 @@ class SweetIRCTests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
     
-    func testUserCanLoginWithoutAllInfo() {
-        var user = User()
+    func testLoginStateCanLoginAllInfo() {
+        let state = LoginState()
         
-        user.nickName = "dan01"
-        user.selectedIRCServer = servers[1];
         
-        XCTAssert(!user.canLogin())
+        state.user.password = "test"
+        state.user.realName = "John Doe"
+        state.user.userName = "johndoe"
+        state.user.nickName = "john@doe"
+        
+        XCTAssert(!state.canLogin())
     }
     
     
-    func testUserCanLogin() {
-        var user = User()
+    func testCanLogin() {
+        let state = LoginState()
         
-        user.nickName = "dan01"
-        user.selectedIRCServer = servers[1];
-        user.password = "123"
-        user.userName = "testUser"
-        user.realName = "Dan Stoan"
         
-        XCTAssert(user.canLogin())
+        state.user.password = "test"
+        state.user.realName = "John Doe"
+        state.user.userName = "johndoe"
+        state.user.nickName = "john@doe"
+
+        state.selectedIRCServer = servers[0]
+        
+        XCTAssert(state.canLogin())
     }
 
     func testPerformanceExample() throws {

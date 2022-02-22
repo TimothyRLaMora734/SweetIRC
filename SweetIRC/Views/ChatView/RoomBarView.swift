@@ -9,13 +9,16 @@ import SwiftUI
 
 struct RoomBarView: View {
     
-    @EnvironmentObject private var chatState: ChatState
+    @StateObject var state: ChatState
     
     var body: some View {
         List {
-            ForEach(chatState.rooms, id: \.self) { room in
-                Text("\(room.name)")
-                    .padding(.top)
+            DisclosureGroup {
+                ForEach(state.rooms, id: \.self) { room in
+                    Text("\(room.name)")
+                }
+            } label: {
+                Label("\(state.server.friendlyName) System Roon", systemImage: "server.rack")
             }
         }
     }
@@ -23,7 +26,6 @@ struct RoomBarView: View {
 
 struct ChanellBarView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomBarView()
-            .environmentObject(ChatState())
+        RoomBarView(state: ChatState(server: servers[0], user: User()))
     }
 }

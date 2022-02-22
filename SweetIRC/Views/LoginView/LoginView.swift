@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject private var chatState: ChatState
+    @ObservedObject var state: LoginState
     
     var body: some View {
         VStack(spacing: 50) {
@@ -16,21 +16,20 @@ struct LoginView: View {
                 .font(.title)
                 .padding(.top)
             
-            LoginFormView(user: $chatState.user)
+            LoginFormView(state: state)
             
             Button(action: {
                 withAnimation(.easeInOut(duration: 1.5)) {
-                    chatState.connect()
-                    chatState.isLoginDone.toggle()
+                    state.isLoginDone.toggle()
                 }
             }) {
                 Text("Connect")
                     .font(.system(size: 15))
                     .frame(width: 80, height: 30)
-                    .scaleEffect(chatState.isLoginDone ? 1.5 : 1.0)
+                    .scaleEffect(state.isLoginDone ? 1.5 : 1.0)
 
             }
-            .disabled(!chatState.user.canLogin())
+            .disabled(!state.canLogin())
             Spacer()
         }
         .frame(width: 300, height: 400)
@@ -40,7 +39,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
-            .environmentObject(ChatState())
+        LoginView(state: LoginState())
     }
 }

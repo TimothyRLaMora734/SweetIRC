@@ -10,12 +10,9 @@ import SwiftUI
 @main
 struct SweetIRCApp: App {
     
-    private var chatState = ChatState()
-
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(chatState)
         }
     }
 }

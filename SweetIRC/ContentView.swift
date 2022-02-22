@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject private var chatState: ChatState
-    
+    let state = LoginState()
+        
     var body: some View {
-        if chatState.isLoginDone {
-            ChatView()
+        if state.isLoginDone {
+            ChatView(state: ChatState(server: state.selectedIRCServer!, user: state.user))
                 .transition(.slide)
+                
         } else {
-            LoginView()
+            LoginView(state: state)
         }
     }
 }
@@ -24,6 +25,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(ChatState())
     }
 }
