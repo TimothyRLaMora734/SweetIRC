@@ -15,14 +15,14 @@ struct MessageSendView: View {
     
     var body: some View {
         HStack {
-            TextField("", text: $textEntry, prompt: Text("Send message here..."))
+            TextField("Send message here", text: $textEntry)
             Button(action: {
                 onSend(textEntry)
             }, label: {
                 Text("Send")
             })
         }
-        .frame(height: 50)
+        .padding()
     }
 }
 
