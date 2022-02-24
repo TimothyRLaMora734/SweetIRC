@@ -10,11 +10,11 @@ import SwiftUI
 
 
 
-class ChatState: ObservableObject {
+class MessageDispatcher: ObservableObject {
     
     private let connection: ServerConnection
     
-    @Published var rooms: [Room] = []
+    @Published private(set) var rooms: [Room] = []
     
     var focusedRoom: Binding<Room> {
         Binding(get: { self.rooms.first { $0.isFocused == true }! },

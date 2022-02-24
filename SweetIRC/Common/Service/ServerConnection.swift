@@ -18,28 +18,47 @@ struct ServerConnection {
     
     let user: User
     
-    let connectionTask: URLSessionStreamTask
+    let serverStream: URLSessionStreamTask
+        
+    private var connectionTask: Task<Bool, Error>?
     
+    var isConnected: Bool {
+        get async {
+            guard
+                let task = connectionTask,
+                let result = try? await task.value else {
+                return false
+            }
+            return result
+        }
+    }
+        
     init(to server: Server, with user: User) {
-        print("Connecting to \(server.hostname):\(server.port)....")
         self.server = server
         self.user = user
-        self.connectionTask = URLSession.shared.streamTask(withHostName: server.hostname, port: server.port)
+        
+        self.serverStream = URLSession.shared.streamTask(withHostName: server.hostname, port: server.port)
+        self.serverStream.startSecureConnection()
+        self.serverStream.resume()
+        
+        self.connectionTask = connect()
     }
     
     
-    func connect() async throws {
-        let task = Task.detached {
-            self.connectionTask.startSecureConnection()
-            self.connectionTask.resume()
-            
-            try await  send(command: "PASS \(user.password)")
-            try await  send(command: "NICK \(user.nickName)")
-            try await  send(command: "USER \(user.userName) 0 * :\(user.realName)")
+     func connect() -> Task<Bool,Error> {
+        print("Connecting to \(server.hostname):\(server.port)....")
+        return Task.detached { () -> Bool in
+            do {
+                try await  send(command: "PASS \(user.password)")
+                try await  send(command: "NICK \(user.nickName)")
+                try await  send(command: "USER \(user.userName) 0 * :\(user.realName)")
+                print("Done conecting to \(server.hostname):\(server.port)....")
+            } catch {
+                return false
+            }
+            return true
         }
-        try await task.result.get()
     }
-    
     
     func send(command: String) async throws  {
         let command  = command + "\n"
@@ -48,13 +67,13 @@ struct ServerConnection {
             throw InvalidDataError.BadEncoding
         }
         
-        try await connectionTask.write(data, timeout: ServerConnection.timeOut)
+        try await serverStream.write(data, timeout: ServerConnection.timeOut)
         print("Sent to server: \(command)")
     }
     
     
     func receive() async throws -> String{
-        let (data,isDone) = try await connectionTask.readData(ofMinLength: 1, maxLength: ServerConnection.maxRead, timeout: ServerConnection.timeOut)
+        let (data,isDone) = try await serverStream.readData(ofMinLength: 1, maxLength: ServerConnection.maxRead, timeout: ServerConnection.timeOut)
         
         guard let data = data else {
             throw InvalidDataError.NoData

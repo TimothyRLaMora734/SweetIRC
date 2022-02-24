@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     
-    @StateObject var state: ChatState
+    @StateObject var state: MessageDispatcher
     
     
     var body: some View {
@@ -25,6 +25,6 @@ struct ChatView: View {
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         let user = User(userName: "Dan", nickName: "dan01", realName: "Dan Me", password: "Alibaba")
-        ChatView(state: ChatState(server: servers[0], user: user))
+        ChatView(state: MessageDispatcher(server: servers[0], user: user))
     }
 }
