@@ -47,7 +47,7 @@ class ChatState: ObservableObject {
 
         
         Task {
-            let message = await connection.receive()
+            let message = try await connection.receive()
             DispatchQueue.main.async {
                 self.rooms[0].chat += message
             }
