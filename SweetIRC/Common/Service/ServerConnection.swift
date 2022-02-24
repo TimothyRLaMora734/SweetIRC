@@ -9,36 +9,42 @@ import Foundation
 
 
 
-class ServerConnection {
+struct ServerConnection {
     static let timeOut = 10.0
     
     static let maxRead = 220
     
     let server: Server
     
+    let user: User
+    
     let connectionTask: URLSessionStreamTask
     
-    
-    init(to server: Server, with user: User)  {
+    init(to server: Server, with user: User) {
         print("Connecting to \(server.hostname):\(server.port)....")
         self.server = server
+        self.user = user
         self.connectionTask = URLSession.shared.streamTask(withHostName: server.hostname, port: server.port)
-        self.connectionTask.startSecureConnection()
-        self.connectionTask.resume()
-        
-        
-        Task {
-            do {
-                try await  send(command: "PASS \(user.password)")
-                try await  send(command: "NICK \(user.nickName)")
-                try await  send(command: "USER \(user.userName) 0 * :\(user.realName)")
-            } catch  {
-                print("Could not connect to \(server.friendlyName)")
-            }
-        }
     }
     
     
+    func connect() async -> Bool {
+        let task = Task.detached {
+            self.connectionTask.startSecureConnection()
+            self.connectionTask.resume()
+            
+            try await  send(command: "PASS \(user.password)")
+            try await  send(command: "NICK \(user.nickName)")
+            try await  send(command: "USER \(user.userName) 0 * :\(user.realName)")
+        }
+        
+        switch await task.result {
+        case .failure(_):
+            return false
+        case .success(_):
+            return true
+        }
+    }
     
     
     func send(command: String) async throws  {
@@ -54,23 +60,22 @@ class ServerConnection {
     }
     
     
-    func receive() async -> String {
-        guard let (data,isDone) = try? await connectionTask.readData(ofMinLength: 1, maxLength: ServerConnection.maxRead, timeout: ServerConnection.timeOut) else {
-            return ""
-        }
+    func receive() async throws -> String{
+        let (data,isDone) = try await connectionTask.readData(ofMinLength: 1, maxLength: ServerConnection.maxRead, timeout: ServerConnection.timeOut)
         
         guard let data = data else {
-            return ""
+            throw InvalidDataError.NoData
         }
         
         guard var message = String(data: data, encoding: .utf8) else {
-            return ""
+            throw InvalidDataError.BadEncoding
         }
         
-        if !isDone {
-            message +=  await receive()
-        }
         print("Received from server: \(message)")
+        
+        if !isDone {
+            message += try await receive()
+        }
         return message
     }
 }
