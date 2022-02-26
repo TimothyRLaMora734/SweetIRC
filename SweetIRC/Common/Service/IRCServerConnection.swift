@@ -9,7 +9,7 @@ import Foundation
 
 
 
-class ServerConnection {
+class IRCServerConnection {
     static let timeOut = 10.0
     
     static let maxRead = 220
@@ -19,59 +19,44 @@ class ServerConnection {
     let connectionTask: URLSessionStreamTask
     
     
-    init(to server: Server, with user: User)  {
+    init(to server: Server)  {
         print("Connecting to \(server.hostname):\(server.port)....")
         self.server = server
         self.connectionTask = URLSession.shared.streamTask(withHostName: server.hostname, port: server.port)
         self.connectionTask.startSecureConnection()
         self.connectionTask.resume()
-        
-        
-        Task {
-            do {
-                try await  send(command: "PASS \(user.password)")
-                try await  send(command: "NICK \(user.nickName)")
-                try await  send(command: "USER \(user.userName) 0 * :\(user.realName)")
-            } catch  {
-                print("Could not connect to \(server.friendlyName)")
-            }
-        }
     }
     
     
     
     
     func send(command: String) async throws  {
-        
         let command  = command + "\n"
         
         guard let data = command.data(using: .utf8) else {
             throw InvalidDataError.BadEncoding
         }
         
-        try await connectionTask.write(data, timeout: ServerConnection.timeOut)
+        try await connectionTask.write(data, timeout: IRCServerConnection.timeOut)
         print("Sent to server: \(command)")
     }
     
     
-    func receive() async -> String {
-        guard let (data,isDone) = try? await connectionTask.readData(ofMinLength: 1, maxLength: ServerConnection.maxRead, timeout: ServerConnection.timeOut) else {
-            return ""
+    func receive() async throws -> (String, Bool)  {
+        guard let (data,isDone) = try? await connectionTask.readData(ofMinLength: 1, maxLength: IRCServerConnection.maxRead, timeout: IRCServerConnection.timeOut) else {
+            throw InvalidDataError.BadServer
         }
         
         guard let data = data else {
-            return ""
+            throw InvalidDataError.NoData
         }
         
-        guard var message = String(data: data, encoding: .utf8) else {
-            return ""
+        guard let message = String(data: data, encoding: .utf8) else {
+            throw InvalidDataError.BadEncoding
         }
         
-        if !isDone {
-            message +=  await receive()
-        }
         print("Received from server: \(message)")
-        return message
+        return (message, isDone)
     }
 }
 
@@ -80,4 +65,5 @@ class ServerConnection {
 enum InvalidDataError : Error {
     case NoData
     case BadEncoding
+    case BadServer
 }

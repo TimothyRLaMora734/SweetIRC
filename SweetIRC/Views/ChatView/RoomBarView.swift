@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RoomBarView: View {
     
-    @StateObject var state: ChatState
+    @StateObject var state: MessageDispatcher
     
     var body: some View {
         List {
@@ -26,6 +26,6 @@ struct RoomBarView: View {
 
 struct ChanellBarView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomBarView(state: ChatState(server: servers[0], user: User()))
+        RoomBarView(state: MessageDispatcher(server: servers[0], user: User()))
     }
 }

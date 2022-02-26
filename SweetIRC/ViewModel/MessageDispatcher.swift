@@ -10,9 +10,9 @@ import SwiftUI
 
 
 
-class ChatState: ObservableObject {
+class MessageDispatcher: ObservableObject {
     
-    private let connection: ServerConnection
+    private let connection: IRCServerConnection
     
     @Published var rooms: [Room] = []
     
@@ -41,16 +41,37 @@ class ChatState: ObservableObject {
     
     
     init(server: Server, user: User)  {
-        self.connection = ServerConnection(to: server, with: user)
+        self.connection = IRCServerConnection(to: server)
         let systemRoom = Room(name: "System room for \(server.friendlyName)", server: server, isFocused: true)
         self.rooms.append(systemRoom)
-
-        
+        self.connect(as: user)
+    }
+    
+    func connect(as user: User) {
         Task {
-            let message = await connection.receive()
-            DispatchQueue.main.async {
-                self.rooms[0].chat += message
+            do {
+                try await  connection.send(command: "PASS \(user.password)")
+                try await  connection.send(command: "NICK \(user.nickName)")
+                try await  connection.send(command: "USER \(user.userName) 0 * :\(user.realName)")
+                listenForMessages()
+            } catch  {
+                print("Could not connect to \(server.friendlyName)")
             }
+        }
+    }
+    
+    func listenForMessages() {
+        Task.detached(priority: .background) {
+            var isDone = false
+            repeat {
+                let (message, done) = try await self.connection.receive()
+                isDone = done
+                DispatchQueue.main.async {
+                    self.rooms[0].chat += message
+                }
+
+                Thread.sleep(forTimeInterval: 2)
+            } while !isDone
         }
     }
     
