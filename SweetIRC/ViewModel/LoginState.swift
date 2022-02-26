@@ -11,11 +11,11 @@ import SwiftUI
 
 class LoginState: ObservableObject {
     
-    @Published var user = User()
+    @Published var user = users[0]
     
     @Published var isLoginDone = false
     
-    @Published var selectedIRCServer: Server?
+    @Published var selectedIRCServer: Server? = servers[0]
     
     
     func canLogin() -> Bool {

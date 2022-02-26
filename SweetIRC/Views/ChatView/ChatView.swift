@@ -24,7 +24,6 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        let user = User(userName: "Dan", nickName: "dan01", realName: "Dan Me", password: "Alibaba")
-        ChatView(state: ChatState(server: servers[0], user: user))
+        ChatView(state: ChatState(server: servers[0], user: users[0]))
     }
 }
