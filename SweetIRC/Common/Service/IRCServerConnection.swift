@@ -14,12 +14,12 @@ class IRCServerConnection {
     
     static let maxRead = 220
     
-    let server: Server
+    let server: ServerInfo
     
     let connectionTask: URLSessionStreamTask
     
     
-    init(to server: Server)  {
+    init(to server: ServerInfo)  {
         print("Connecting to \(server.hostname):\(server.port)....")
         self.server = server
         self.connectionTask = URLSession.shared.streamTask(withHostName: server.hostname, port: server.port)

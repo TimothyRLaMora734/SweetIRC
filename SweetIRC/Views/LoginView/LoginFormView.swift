@@ -22,11 +22,11 @@ struct LoginFormView: View {
             Picker("Server", selection: $state.selectedIRCServer) {
                 if state.selectedIRCServer == nil {
                     Text("Please selected a IRC server")
-                        .tag(nil as Server?)
+                        .tag(nil as ServerInfo?)
                 }
                 ForEach(servers, id: \.self) { server in
                     Text("\(server.friendlyName)")
-                        .tag(server as Server?)
+                        .tag(server as ServerInfo?)
                 }
             }
             .padding(.top)

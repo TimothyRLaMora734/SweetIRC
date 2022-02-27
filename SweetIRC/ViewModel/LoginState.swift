@@ -15,7 +15,7 @@ class LoginState: ObservableObject {
     
     @Published var isLoginDone = false
     
-    @Published var selectedIRCServer: Server? = servers[0]
+    @Published var selectedIRCServer: ServerInfo? = servers[0]
     
     
     func canLogin() -> Bool {

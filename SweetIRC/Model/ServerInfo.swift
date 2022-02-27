@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Server: Hashable {
+struct ServerInfo: Hashable {
     let friendlyName: String
     let hostname: String
     let port: Int
