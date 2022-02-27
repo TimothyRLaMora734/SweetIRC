@@ -10,7 +10,7 @@ import Foundation
 
 struct Room : Hashable {
     let name: String
-    let server: ServerInfo
+    let info: ServerInfo
     
     var chat = ""
     var isFocused = false

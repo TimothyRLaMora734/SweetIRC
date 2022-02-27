@@ -13,7 +13,7 @@ struct ContentView: View {
         
     var body: some View {
         if state.isLoginDone {
-            ChatView(state: MessageDispatcher(server: state.selectedIRCServer!, user: state.user))
+            ChatView(state: MessageDispatcher(info: state.selectedIRCServer!, user: state.user))
                 .transition(.slide)
                 
         } else {

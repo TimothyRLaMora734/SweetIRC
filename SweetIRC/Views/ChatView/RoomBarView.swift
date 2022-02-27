@@ -18,7 +18,7 @@ struct RoomBarView: View {
                     NavigationLink(destination: MessageView(room: state.roomOf(name: room.name)), label: {Text("\(room.name)")})
                 }
             } label: {
-                Label("\(state.server.friendlyName)", systemImage: "server.rack")
+                Label("\(state.serverInfo.friendlyName)", systemImage: "server.rack")
             }
         }
     }
@@ -26,6 +26,6 @@ struct RoomBarView: View {
 
 struct ChanellBarView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomBarView(state: MessageDispatcher(server: servers[0], user: User()))
+        RoomBarView(state: MessageDispatcher(info: servers[0], user: User()))
     }
 }

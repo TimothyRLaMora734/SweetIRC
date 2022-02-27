@@ -24,6 +24,6 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(state: MessageDispatcher(server: servers[0], user: users[0]))
+        ChatView(state: MessageDispatcher(info: servers[0], user: users[0]))
     }
 }

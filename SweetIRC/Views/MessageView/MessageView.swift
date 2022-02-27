@@ -21,6 +21,6 @@ struct MessageView: View {
 
 struct MessagesView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView(room: .constant(Room(name: "System Room", server: servers[0], isFocused: true)))
+        MessageView(room: .constant(Room(name: "System Room", info: servers[0], isFocused: true)))
     }
 }
