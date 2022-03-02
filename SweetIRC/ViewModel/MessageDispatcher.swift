@@ -20,6 +20,14 @@ class MessageDispatcher: ObservableObject {
     
     let serverInfo: ServerInfo
     
+    @Published private(set)  var isConnected: Bool = false {
+        willSet{
+            if newValue {
+                self.startDispatching()
+            }
+        }
+    }
+    
     @Published var rooms: [Room] = []
     
     var focusedRoom: Binding<Room> {
@@ -48,14 +56,27 @@ class MessageDispatcher: ObservableObject {
         self.server = IRCServer(of: info)
         let systemRoom = Room(name: "System room for \(info.friendlyName)", info: info, isFocused: true)
         self.rooms.append(systemRoom)
-        self.connectingToIRCServerTask = connect(to: server, as: user)
-        self.listeningForMessagesTask = server.startReceivingMessage(to: self)
+        Task.detached {
+            let result = try await connect(to: self.server, as: user)
+            DispatchQueue.main.async {
+                self.isConnected = result
+            }
+        }
     }
     
     
-    func dispatch(message: String) {
-        DispatchQueue.main.async {
-            self.rooms[0].write(message: message)
+    func startDispatching() {
+        if let task = self.listeningForMessagesTask {
+            task.cancel()
+        }
+        
+        self.listeningForMessagesTask = Task.detached(priority: .background) {
+            for await message in self.server.messageStream() {
+                DispatchQueue.main.async {
+                    self.rooms[0].write(message: message)
+                }
+            }
+            return true
         }
     }
     
