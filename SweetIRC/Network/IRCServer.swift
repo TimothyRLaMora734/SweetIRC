@@ -64,12 +64,12 @@ class IRCServer {
                 return continuation.finish()
             }
 
-            if !isDone {
-                continuation.yield(message)
-                await receiveMessage()
-            } else {
+            if isDone {
                 return continuation.finish()
-            }
+            } 
+            
+            continuation.yield(message)
+            await receiveMessage()
         }
     }
 }
