@@ -47,27 +47,28 @@ class IRCServer {
     func messageStream() -> AsyncStream<String> {
         AsyncStream<String> {  continuation  in
             Task {
-                func receiveMessage() async  {
-                    guard let (data, isDone) = try? await self.connectionTask.readData(ofMinLength: IRCServer.minRead, maxLength: IRCServer.maxRead, timeout: IRCServer.timeOut) else {
-                        return continuation.finish()
-                    }
-                    
-                    guard let data = data else {
-                       return  continuation.finish()
-                    }
-                    
-                    guard let message = String(data: data, encoding: .utf8) else {
-                        return continuation.finish()
-                    }
-                    
-                    if !isDone {
-                        continuation.yield(message)
-                        await receiveMessage()
-                    } else {
-                        return continuation.finish()
-                    }
-                }
                 await receiveMessage()
+            }
+        }
+        
+        func receiveMessage() async  {
+            guard let (data, isDone) = try? await self.connectionTask.readData(ofMinLength: IRCServer.minRead, maxLength: IRCServer.maxRead, timeout: IRCServer.timeOut) else {
+                return continuation.finish()
+            }
+
+            guard let data = data else {
+               return  continuation.finish()
+            }
+
+            guard let message = String(data: data, encoding: .utf8) else {
+                return continuation.finish()
+            }
+
+            if !isDone {
+                continuation.yield(message)
+                await receiveMessage()
+            } else {
+                return continuation.finish()
             }
         }
     }
