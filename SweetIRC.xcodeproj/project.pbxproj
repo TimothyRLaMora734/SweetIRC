@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		376796C827D12A5E00C12F9F /* ChatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376796C727D12A5E00C12F9F /* ChatState.swift */; };
+		376796CA27D12A6800C12F9F /* MessageDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376796C927D12A6800C12F9F /* MessageDispatcher.swift */; };
 		377C304427C59ED1006B20F9 /* MessageSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C304327C59ED1006B20F9 /* MessageSendView.swift */; };
 		377C304627C5A03F006B20F9 /* MessageTextAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C304527C5A03F006B20F9 /* MessageTextAreaView.swift */; };
 		37C6699927B80F2F00B8F193 /* SweetIRCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6699827B80F2F00B8F193 /* SweetIRCApp.swift */; };
@@ -25,7 +27,6 @@
 		37DD30D227B8190400D7C4E4 /* ServerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD30D127B8190400D7C4E4 /* ServerInfo.swift */; };
 		37DD30D527B8281F00D7C4E4 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD30D427B8281F00D7C4E4 /* LoginState.swift */; };
 		37E7FD4F27BFEC0000613000 /* IRCServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E7FD4E27BFEC0000613000 /* IRCServer.swift */; };
-		37E7FD5227C5444E00613000 /* MessageDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E7FD5127C5444E00613000 /* MessageDispatcher.swift */; };
 		37F6894727BA428500A0D8A9 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6894627BA428500A0D8A9 /* LoginFormView.swift */; };
 		37F6894A27BA452600A0D8A9 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6894927BA452600A0D8A9 /* ChatView.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		376796C727D12A5E00C12F9F /* ChatState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatState.swift; sourceTree = "<group>"; };
+		376796C927D12A6800C12F9F /* MessageDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDispatcher.swift; sourceTree = "<group>"; };
 		377C304327C59ED1006B20F9 /* MessageSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSendView.swift; sourceTree = "<group>"; };
 		377C304527C5A03F006B20F9 /* MessageTextAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextAreaView.swift; sourceTree = "<group>"; };
 		37C6699527B80F2F00B8F193 /* SweetIRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetIRC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +73,6 @@
 		37DD30D127B8190400D7C4E4 /* ServerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerInfo.swift; sourceTree = "<group>"; };
 		37DD30D427B8281F00D7C4E4 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		37E7FD4E27BFEC0000613000 /* IRCServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRCServer.swift; sourceTree = "<group>"; };
-		37E7FD5127C5444E00613000 /* MessageDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDispatcher.swift; sourceTree = "<group>"; };
 		37F6894627BA428500A0D8A9 /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
 		37F6894927BA452600A0D8A9 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,8 +214,8 @@
 		37DD30D327B8280900D7C4E4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				376796C727D12A5E00C12F9F /* ChatState.swift */,
 				37DD30D427B8281F00D7C4E4 /* LoginState.swift */,
-				37E7FD5127C5444E00613000 /* MessageDispatcher.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -221,6 +223,7 @@
 		37E7FD4D27BFEBED00613000 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				376796C927D12A6800C12F9F /* MessageDispatcher.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -381,10 +384,11 @@
 				377C304427C59ED1006B20F9 /* MessageSendView.swift in Sources */,
 				37DC8A0C27BBD46F007F003B /* RoomBarView.swift in Sources */,
 				37DD30D227B8190400D7C4E4 /* ServerInfo.swift in Sources */,
+				376796CA27D12A6800C12F9F /* MessageDispatcher.swift in Sources */,
 				37DD30CA27B8165000D7C4E4 /* LoginView.swift in Sources */,
-				37E7FD5227C5444E00613000 /* MessageDispatcher.swift in Sources */,
 				37F6894A27BA452600A0D8A9 /* ChatView.swift in Sources */,
 				37C6699B27B80F2F00B8F193 /* ContentView.swift in Sources */,
+				376796C827D12A5E00C12F9F /* ChatState.swift in Sources */,
 				37DC8A0E27BBD47D007F003B /* MessageView.swift in Sources */,
 				37C6699927B80F2F00B8F193 /* SweetIRCApp.swift in Sources */,
 				37F6894727BA428500A0D8A9 /* LoginFormView.swift in Sources */,
@@ -552,7 +556,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SweetIRC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SweetIRC/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -578,7 +582,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SweetIRC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SweetIRC/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
