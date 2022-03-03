@@ -49,39 +49,51 @@ class IRCServer {
             Task {
                 await receiveMessage()
             }
-        }
-        
-        func receiveMessage() async  {
-            guard let (data, isDone) = try? await self.connectionTask.readData(ofMinLength: IRCServer.minRead, maxLength: IRCServer.maxRead, timeout: IRCServer.timeOut) else {
-                return continuation.finish()
-            }
-
-            guard let data = data else {
-               return  continuation.finish()
-            }
-
-            guard let message = String(data: data, encoding: .utf8) else {
-                return continuation.finish()
-            }
-
-            if isDone {
-                return continuation.finish()
-            } 
             
-            continuation.yield(message)
-            await receiveMessage()
+            @Sendable func receiveMessage() async  {
+               guard let (data, isDone) = try? await self.connectionTask.readData(ofMinLength: IRCServer.minRead, maxLength: IRCServer.maxRead, timeout: IRCServer.timeOut) else {
+                   return continuation.finish()
+               }
+
+               guard let data = data else {
+                  return  continuation.finish()
+               }
+
+               guard let message = String(data: data, encoding: .utf8) else {
+                   return continuation.finish()
+               }
+
+               if isDone {
+                   return continuation.finish()
+               }
+               
+                print("Received from server: \(message)")
+               continuation.yield(message)
+               await receiveMessage()
+           }
         }
     }
 }
 
 
-func connect(to server: IRCServer, as user: User) async throws -> Bool {
+func connectToIRCServer(of server: IRCServer, as user: User) async throws -> Bool {
     try await  server.send(command: "PASS \(user.password)")
     try await  server.send(command: "NICK \(user.nickName)")
     try await  server.send(command: "USER \(user.userName) 0 * :\(user.realName)")
     return true
 }
 
+
+func sendMessage(to room: Room, at server: IRCServer, of message: String) async throws {
+    try await server.send(command: "PRIVMSG \(room.name) :\(message)")
+}
+
+func joinRoom(named roomName: String, at server: IRCServer, using dispatcher: MessageDispatcher) async throws -> Room {
+    try await server.send(command: "JOIN \(roomName)")
+    let room = Room(name: roomName, info: server.info)
+    dispatcher.subscribe(room: room)
+    return room
+}
 
 enum ServerConnectionError : Error {
     case NoData

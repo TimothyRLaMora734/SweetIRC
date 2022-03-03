@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct MessageTextAreaView: View {
-    
-    @Binding var text: String
+
+    @ObservedObject var room: Room
     
     var body: some View {
-        TextEditor(text: $text)
+        Text(room.chat)
+            .lineLimit(nil)
             .frame(width: 640)
     }
 }
 
 struct MessageTextArea_Previews: PreviewProvider {
     static var previews: some View {
-        MessageTextAreaView(text: .constant("lorem impsum"))
+        return MessageTextAreaView(room: rooms[0])
     }
 }

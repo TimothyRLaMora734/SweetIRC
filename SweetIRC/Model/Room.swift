@@ -7,16 +7,27 @@
 
 import Foundation
 
-
-struct Room : Hashable {
+class Room: ObservableObject, Identifiable {
+    
+    let id = UUID()
     let name: String
     let info: ServerInfo
     
-    var chat = ""
+    @Published private(set) var chat = ""
     var isFocused = false
     
     
-    mutating func write(message: String) {
+    func write(message: String) {
         chat += message
+    }
+    
+    convenience init(name: String, info: ServerInfo, isFocused: Bool?){
+        self.init(name: name, info: info)
+        self.isFocused = isFocused ?? false
+    }
+    
+    init(name: String, info: ServerInfo) {
+        self.name = name
+        self.info = info
     }
 }
