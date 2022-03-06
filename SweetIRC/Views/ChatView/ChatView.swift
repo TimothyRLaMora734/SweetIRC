@@ -16,7 +16,7 @@ struct ChatView: View {
         NavigationView{
             RoomBarView()
                 .frame(minWidth: 150)
-            Group{
+            Group {
                 
             }
         }
