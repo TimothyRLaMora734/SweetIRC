@@ -9,20 +9,19 @@ import SwiftUI
 
 struct MessageView: View {
     
-    @EnvironmentObject var state: ChatState
+    @StateObject var room: Room
         
     var body: some View {
         VStack{
-            MessageTextAreaView(room: state.focusedRoom)
-                .frame(minHeight: 300)
-            MessageSendView(onSend: { text in state.focusedRoom.write(message:text)})
+            MessageTextAreaView(room: room)
+                .frame(minHeight: 520)
+            MessageSendView(currentRoom: room)
         }
     }
 }
 
 struct MessagesView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView()
-            .environmentObject(ChatState(selectedServer: servers[0], user: users[0]))
+        MessageView(room: rooms[0])
     }
 }

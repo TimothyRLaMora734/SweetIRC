@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         if state.isLoginDone {
             ChatView()
-                .environmentObject(ChatState(selectedServer: state.selectedIRCServer!, user: state.user))
+                .environmentObject(ChatState(server: server, of: users[0]))
                 .transition(.slide)
                 
         } else {

@@ -15,4 +15,5 @@ let servers = [ServerInfo(friendlyName: "Libera Chat", hostname: "irc.libera.cha
 
 let users = [User(userName: "dirkAbend", nickName: "dirkTheGreat", realName: "Dirk AbendHoff", password: "dirkisthebest")]
 
-let rooms = [Room(name: "System Room", info: servers[0])]
+let server = IRCServer(of: servers[0])
+let rooms = [Room(name: "System Room", server: IRCServer(of: servers[0]))]

@@ -9,25 +9,26 @@ import SwiftUI
 
 struct MessageSendView: View {
     
-    let onSend: (String) -> Void
+    let currentRoom: Room?
     
+    @EnvironmentObject var state: ChatState
     @State private var textEntry = ""
     
     var body: some View {
         HStack {
             TextField("", text: $textEntry, prompt: Text("Send message here..."))
             Button(action: {
-                onSend(textEntry)
+                state.joinRoom(named: textEntry)
             }, label: {
                 Text("Send")
             })
         }
-        .frame(height: 50)
+        .padding()
     }
 }
 
 struct MessageSendView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageSendView(onSend: { t in })
+        MessageSendView(currentRoom: rooms[0])
     }
 }

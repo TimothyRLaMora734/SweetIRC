@@ -16,7 +16,9 @@ struct ChatView: View {
         NavigationView{
             RoomBarView()
                 .frame(minWidth: 150)
-            MessageView()
+            Group{
+                
+            }
         }
         .frame(width: 800, height: 600)
     }
@@ -25,6 +27,6 @@ struct ChatView: View {
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         ChatView()
-            .environmentObject(ChatState(selectedServer: servers[0], user: users[0]))
+            .environmentObject(ChatState(server: IRCServer(of: servers[0]), of: users[0]))
     }
 }

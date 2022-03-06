@@ -8,26 +8,25 @@
 import Foundation
 
 class Room: ObservableObject, Identifiable {
-    
     let id = UUID()
     let name: String
-    let info: ServerInfo
+    private let server: IRCServer
     
     @Published private(set) var chat = ""
-    var isFocused = false
     
     
-    func write(message: String) {
-        chat += message
+    public func receiveMessage(of message: String) {
+        DispatchQueue.main.async {
+            self.chat += message
+        }
     }
     
-    convenience init(name: String, info: ServerInfo, isFocused: Bool?){
-        self.init(name: name, info: info)
-        self.isFocused = isFocused ?? false
+    public func sendMessage(_ message: String) {
+        server.sendMessage(message, to: self.name)
     }
     
-    init(name: String, info: ServerInfo) {
+    init(name: String, server: IRCServer){
         self.name = name
-        self.info = info
+        self.server = server
     }
 }
