@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     
-    @EnvironmentObject var state: ChatState
+    @EnvironmentObject var server: IRCServer
     
     
     var body: some View {
@@ -27,6 +27,6 @@ struct ChatView: View {
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         ChatView()
-            .environmentObject(ChatState(server: server))
+            .environmentObject(server)
     }
 }

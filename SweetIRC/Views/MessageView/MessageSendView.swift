@@ -11,14 +11,14 @@ struct MessageSendView: View {
     
     let currentRoom: Room?
     
-    @EnvironmentObject var state: ChatState
+    @EnvironmentObject var server: IRCServer
     @State private var textEntry = ""
     
     var body: some View {
         HStack {
             TextField("", text: $textEntry, prompt: Text("Send message here..."))
             Button(action: {
-                state.joinRoom(named: textEntry)
+                server.joinRoom(of: textEntry)
             }, label: {
                 Text("Send")
             })

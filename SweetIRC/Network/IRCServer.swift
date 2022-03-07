@@ -43,10 +43,12 @@ class IRCServer: ObservableObject {
         }
     }
     
-    public func joinRoom(of roomName: String) -> Room {
+    public func joinRoom(of roomName: String) {
         let newRoom = Room(name: roomName, server: self)
         rooms.append(newRoom)
-        return newRoom
+        Task.detached(priority: .background) {
+           try await self.send(command: "JOIN \(roomName)")
+        }
     }
     
     private func send(command: String) async throws  {
