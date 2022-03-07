@@ -27,6 +27,6 @@ struct ChatView: View {
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         ChatView()
-            .environmentObject(ChatState(server: IRCServer(of: servers[0]), of: users[0]))
+            .environmentObject(ChatState(server: server))
     }
 }

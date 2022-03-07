@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         if state.isLoginDone {
             ChatView()
-                .environmentObject(ChatState(server: server, of: users[0]))
+                .environmentObject(ChatState(server: server))
                 .transition(.slide)
                 
         } else {

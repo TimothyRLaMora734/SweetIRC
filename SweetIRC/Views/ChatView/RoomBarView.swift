@@ -14,7 +14,7 @@ struct RoomBarView: View {
     var body: some View {
         List {
             DisclosureGroup {
-                ForEach(state.rooms) { room in
+                ForEach(state.server.rooms) { room in
                     NavigationLink(destination: MessageView(room: room), label: {Text("\(room.name)")})
                 }
             } label: {
@@ -27,6 +27,6 @@ struct RoomBarView: View {
 struct ChanellBarView_Previews: PreviewProvider {
     static var previews: some View {
         RoomBarView()
-            .environmentObject(ChatState(server: server, of: users[0]))
+            .environmentObject(ChatState(server: server))
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MessageView: View {
     
-    @StateObject var room: Room
+    @ObservedObject var room: Room
         
     var body: some View {
         VStack{

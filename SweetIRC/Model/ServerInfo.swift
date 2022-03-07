@@ -12,4 +12,5 @@ struct ServerInfo: Hashable {
     let friendlyName: String
     let hostname: String
     let port: Int
+    let domain: String
 }

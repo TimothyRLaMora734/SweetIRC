@@ -14,6 +14,7 @@ struct MessageTextAreaView: View {
     var body: some View {
         Text(room.chat)
             .lineLimit(nil)
+            .frame(minHeight: 520)
     }
 }
 

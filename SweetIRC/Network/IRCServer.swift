@@ -9,21 +9,45 @@ import Foundation
 
 
 
-class IRCServer {
-    static let timeOut = 10.0, maxRead = 220, minRead = 1
+class IRCServer: ObservableObject {
+    static let timeOut = 10.0, maxRead = 512, minRead = 1
     
     let info: ServerInfo
     
     private let connectionTask: URLSessionStreamTask
     
-    init(of info: ServerInfo)  {
+    @Published private(set) var rooms: [Room] = []
+    
+    init(of info: ServerInfo, as user: User)  {
         print("Connecting to \(info.hostname):\(info.port)....")
         self.info = info
         self.connectionTask = URLSession.shared.streamTask(withHostName: info.hostname, port: info.port)
         self.connectionTask.startSecureConnection()
         self.connectionTask.resume()
+        
+        connect(as: user)
+        rooms.append(Room(name: info.domain, server: self))
+        dispatch()
     }
     
+    private func connect(as user: User) {
+        Task.detached(priority: .background) {
+            try await  self.send(command: "NICK \(user.nickName)")
+            try await  self.send(command: "USER \(user.userName) 0 * :\(user.realName)")
+        }
+    }
+    
+    public func sendMessage(_ message: String, to roomName: String) {
+        Task {
+            try await self.send(command: "PRIVMSG \(roomName) :\(message)")
+        }
+    }
+    
+    public func joinRoom(of roomName: String) -> Room {
+        let newRoom = Room(name: roomName, server: self)
+        rooms.append(newRoom)
+        return newRoom
+    }
     
     private func send(command: String) async throws  {
         let command  = command + "\n"
@@ -41,6 +65,7 @@ class IRCServer {
         AsyncStream<String> {  continuation  in
             Task {
                 await receiveMessage()
+                print("End of data stream")
             }
             
             @Sendable func receiveMessage() async  {
@@ -67,44 +92,12 @@ class IRCServer {
         }
     }
     
-    public func connect(as user: User) async throws -> Room {
-        try await  self.send(command: "NICK \(user.nickName)")
-        try await  self.send(command: "USER \(user.userName) 0 * :\(user.realName)")
-        
-        
-        let room = Room(name: "systemRoom", server: self)
+    private func dispatch() {
         Task.detached(priority: .background) {
-            for await message in server.messageStream() {
-                if message.contains("libera.chat"){
-                    room.receiveMessage(of: message)
-                }
+            for await message in self.messageStream() {
+                self.rooms[0].receiveMessage(of: message)
             }
         }
-        return room
-        
-    }
-    
-    public func sendMessage(_ message: String, to roomName: String) {
-        Task {
-            try await self.send(command: "PRIVMSG \(roomName) :\(message)")
-        }
-    }
-    
-    public func joinRoom(of roomName: String) -> Room {
-        Task {
-            try await self.send(command: "JOIN \(roomName)")
-        }
-        let newRoom = Room(name: roomName, server: self)
-        Task.detached(priority: .background) {
-            for await message in server.messageStream() {
-                if message.contains("PRIVMSG \(newRoom.name)") {
-                    DispatchQueue.main.async {
-                        newRoom.receiveMessage(of: message)
-                    }
-                }
-            }
-        }
-        return newRoom
     }
 }
 
