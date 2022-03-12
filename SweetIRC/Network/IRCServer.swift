@@ -10,7 +10,7 @@ import Foundation
 
 
 class IRCServer: ObservableObject {
-    static let timeOut = 10.0, maxRead = 512, minRead = 1
+    static let timeOut = 0.0, maxRead = 512, minRead = 1
     
     let info: ServerInfo
     
