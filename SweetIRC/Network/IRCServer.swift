@@ -105,11 +105,13 @@ class IRCServer: ObservableObject {
             if message.contains("PRIVMSG ") {
                 let split = message.split(separator: " ")
                 let roomName = split[2]
+                let personName = split[0]
                 let lasC = message.lastIndex(of: ":")!
                 let message = String(message[message.index(after: lasC)...])
-                self.rooms.first(where: { $0.name == roomName})!.receiveMessage(of: message)
+                self.rooms.first(where: { $0.name == roomName})!.receiveMessage(of: message, from: String(personName[personName.index(after: personName.startIndex)...personName.index(before: personName.firstIndex(of: "@")!)]))
             } else {
-                self.rooms[0].receiveMessage(of: message)
+                let idx = message.firstIndex(of: " ")!
+                self.rooms[0].receiveMessage(of: String(message[idx...]), from: String(message[...idx]))
             }
         }
     }

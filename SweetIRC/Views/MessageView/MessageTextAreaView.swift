@@ -12,9 +12,11 @@ struct MessageTextAreaView: View {
     @ObservedObject var room: Room
     
     var body: some View {
-        Text(room.chat)
-            .lineLimit(nil)
-            .frame(minHeight: 520)
+        GeometryReader { proxy in
+            Text(room.chat)
+                .lineLimit(nil)
+        }
+        .frame(minHeight: 520)
     }
 }
 

@@ -15,9 +15,9 @@ class Room: ObservableObject, Identifiable {
     @Published private(set) var chat = ""
     
     
-    public func receiveMessage(of message: String) {
+    public func receiveMessage(of message: String, from name: String ) {
         DispatchQueue.main.async {
-            self.chat += message
+            self.chat += "\(name): \(message)"
         }
     }
     
