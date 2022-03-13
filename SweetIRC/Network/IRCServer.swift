@@ -51,6 +51,12 @@ class IRCServer: ObservableObject {
         }
     }
     
+    private func sendPong(pingMessage: String) {
+        Task.detached(priority: .background) {
+            try await self.send(command: "PONG")
+        }
+    }
+    
     private func send(command: String) async throws  {
         let command  = command + "\n"
         
@@ -102,6 +108,10 @@ class IRCServer: ObservableObject {
         }
         
         @Sendable func dispatchToRoom(_ message: String) {
+            if message.contains("QUIT :Ping") {
+                self.sendPong(pingMessage: message)
+                return
+            }
             if message.contains("PRIVMSG ") {
                 let split = message.split(separator: " ")
                 let roomName = split[2]
