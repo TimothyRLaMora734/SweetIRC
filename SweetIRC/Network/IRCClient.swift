@@ -9,7 +9,7 @@ import Foundation
 
 
 
-class IRCServer: ObservableObject {
+class IRCClient: ObservableObject {
     static let timeOut = 0.0, maxRead = 512, minRead = 1
     
     let info: ServerInfo
@@ -58,7 +58,7 @@ class IRCServer: ObservableObject {
             throw ServerConnectionError.BadEncoding
         }
         
-        try await connectionTask.write(data, timeout: IRCServer.timeOut)
+        try await connectionTask.write(data, timeout: IRCClient.timeOut)
         print("Sent to server: \(command)")
     }
     
@@ -71,7 +71,7 @@ class IRCServer: ObservableObject {
             }
             
             @Sendable func receiveMessage() async  {
-                guard let (data, isDone) = try? await self.connectionTask.readData(ofMinLength: IRCServer.minRead, maxLength: IRCServer.maxRead, timeout: IRCServer.timeOut) else {
+                guard let (data, isDone) = try? await self.connectionTask.readData(ofMinLength: IRCClient.minRead, maxLength: IRCClient.maxRead, timeout: IRCClient.timeOut) else {
                     return continuation.finish()
                 }
                 
@@ -97,18 +97,6 @@ class IRCServer: ObservableObject {
     private func dispatch() {
         Task.detached(priority: .background) {
             for await message in self.messageStream() {
-               dispatchToRoom(message)
-            }
-        }
-        
-        @Sendable func dispatchToRoom(_ message: String) {
-            if message.contains("PRIVMSG ") {
-                let split = message.split(separator: " ")
-                let roomName = split[2]
-                let lasC = message.lastIndex(of: ":")!
-                let message = String(message[message.index(after: lasC)...])
-                self.rooms.first(where: { $0.name == roomName})!.receiveMessage(of: message)
-            } else {
                 self.rooms[0].receiveMessage(of: message)
             }
         }
