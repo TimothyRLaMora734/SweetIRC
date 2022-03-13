@@ -2,7 +2,7 @@
 IRC client for macOS 12, Monterey, written in Swift with SwiftUI, and URLSession for plain TCP/IP connection.
 
 
-##About
+## About
 
 SweetIRC is still in prototype phase, it can currently receive messages, join rooms, stay alive by sending PONG responses to the IRC Server, it can also send messages, but the GUI needs some work done
 
