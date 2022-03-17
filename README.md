@@ -7,8 +7,7 @@ IRC client for macOS 12, Monterey, written in Swift with SwiftUI, and URLSession
 SweetIRC is still in prototype phase, it can currently receive messages, join rooms, stay alive by sending PONG responses to the IRC Server, it can also send messages, but the GUI needs some work done
 
 
-<<<<<<< HEAD
-=======
+
 ### How does it look?
 
 This is the initial screen, where you enter your data and possibly credentials:
@@ -28,7 +27,6 @@ You can then go on and connect to other channels (aka rooms), like **##programmi
 I'm currently working on prototyping joining rooms:
 
 <img width="912" alt="image" src="https://user-images.githubusercontent.com/10388612/158571289-a14a27ba-cbf7-4526-93fd-6660d12d6280.png">
->>>>>>> 0e5eebd1d632299015803086a3169433ae922365
 
 
 
