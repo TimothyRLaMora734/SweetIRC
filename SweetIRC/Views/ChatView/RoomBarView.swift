@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct RoomBarView: View {
-    
-    @EnvironmentObject var server: IRCServer
+    @EnvironmentObject var server: IRCClient
     
     var body: some View {
         List {

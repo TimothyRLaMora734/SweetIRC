@@ -11,7 +11,7 @@ struct MessageSendView: View {
     
     let currentRoom: Room?
     
-    @EnvironmentObject var server: IRCServer
+    @EnvironmentObject var server: IRCClient
     @State private var textEntry = ""
     
     var body: some View {

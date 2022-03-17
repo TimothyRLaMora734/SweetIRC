@@ -10,7 +10,7 @@ import Foundation
 class Room: ObservableObject, Identifiable {
     let id = UUID()
     let name: String
-    private let server: IRCServer
+    private let server: IRCClient
     
     @Published private(set) var chat = ""
     
@@ -25,7 +25,7 @@ class Room: ObservableObject, Identifiable {
         server.sendMessage(message, to: self.name)
     }
     
-    init(name: String, server: IRCServer){
+    init(name: String, server: IRCClient){
         self.name = name
         self.server = server
     }

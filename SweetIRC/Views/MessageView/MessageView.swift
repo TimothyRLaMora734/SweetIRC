@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MessageView: View {
-    
     @ObservedObject var room: Room
         
     var body: some View {

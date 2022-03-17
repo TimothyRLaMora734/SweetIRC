@@ -18,6 +18,9 @@ class IRCClient: ObservableObject {
     
     @Published private(set) var rooms: [Room] = []
     
+    @Published private(set) var channels: [String] = []
+    
+    
     init(of info: ServerInfo, as user: User)  {
         print("Connecting to \(info.hostname):\(info.port)....")
         self.info = info
@@ -47,7 +50,19 @@ class IRCClient: ObservableObject {
         let newRoom = Room(name: roomName, server: self)
         rooms.append(newRoom)
         Task.detached(priority: .background) {
-           try await self.send(command: "JOIN \(roomName)")
+            try await self.send(command: "JOIN \(roomName)")
+        }
+    }
+    
+    public func listChannels() {
+        Task.detached(priority: .background) {
+            try await self.send(command: "LIST")
+        }
+    }
+    
+    private func sendPong(pingMessage: String) {
+        Task.detached(priority: .background) {
+            try await self.send(command: "PONG")
         }
     }
     
@@ -66,30 +81,37 @@ class IRCClient: ObservableObject {
     private func messageStream() -> AsyncStream<String> {
         AsyncStream<String> {  continuation  in
             Task {
-                await receiveMessage()
+                let _ = await receiveMessage()
                 print("End of data stream")
             }
             
-            @Sendable func receiveMessage() async  {
+            @Sendable func receiveMessage(buufer: String = "") async -> String  {
                 guard let (data, isDone) = try? await self.connectionTask.readData(ofMinLength: IRCClient.minRead, maxLength: IRCClient.maxRead, timeout: IRCClient.timeOut) else {
-                    return continuation.finish()
+                    continuation.finish()
+                    return ""
                 }
                 
                 guard let data = data else {
-                    return  continuation.finish()
+                    continuation.finish()
+                    return ""
                 }
                 
-                guard let message = String(data: data, encoding: .utf8) else {
-                    return continuation.finish()
+                guard var message = String(data: data, encoding: .utf8) else {
+                    continuation.finish()
+                    return ""
                 }
                 
                 if isDone {
-                    return continuation.finish()
+                    continuation.finish()
+                    return ""
                 }
                 
                 print("Received from server: \(message)")
+                if !message.contains("\n") {
+                    message += await receiveMessage()
+                }
                 continuation.yield(message)
-                await receiveMessage()
+                return await receiveMessage()
             }
         }
     }
@@ -97,7 +119,32 @@ class IRCClient: ObservableObject {
     private func dispatch() {
         Task.detached(priority: .background) {
             for await message in self.messageStream() {
-                self.rooms[0].receiveMessage(of: message)
+                dispatchToRoom(message)
+            }
+        }
+        
+        @Sendable func dispatchToRoom(_ message: String) {
+            switch message {
+            case let message where message.contains("QUIT :Ping"):
+                self.sendPong(pingMessage: message)
+                return
+            case let message where message.contains("PRIVMSG "):
+                let split = message.split(separator: " ")
+                let roomName = split[2]
+                let personName = split[0]
+                let lasC = message.lastIndex(of: ":")!
+                let message = String(message[message.index(after: lasC)...])
+                self.rooms.first(where: { $0.name == roomName})!.receiveMessage(of: message, from: String(personName[personName.index(after: personName.startIndex)...personName.index(before: personName.firstIndex(of: "@")!)]))
+            case let message where message.contains("322"):
+                let split = message.split(separator: " ")
+                let st = split[3].startIndex
+                let end = split[3].endIndex
+                DispatchQueue.main.async {
+                    self.channels.append(String(message[st...end]))
+                }
+            default:
+                let idx = message.firstIndex(of: " ")!
+                self.rooms[0].receiveMessage(of: String(message[idx...]), from: String(message[...idx]))
             }
         }
     }
